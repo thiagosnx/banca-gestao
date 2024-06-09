@@ -28,6 +28,24 @@ class Gestao {
         $res = $db->DbInsert($sql);
         echo json_encode($res);
     }
+
+    function setNewTransacao(){
+        $ID_TRNC = $this->genId();
+        $ID_GST = $_POST['id_gst'];
+        $TIP_TRNC = $_POST['tip_trnc'];
+        $VL_TRNC = $_POST['vl_trnc'];
+        $DT_TRNC = $_POST['dt_trnc'];
+        $ODD_APST = $_POST['odd_apst'];
+        $RSTD_APST = $_POST['rstd_apst'];
+        $RTRN_APST = $_POST['rtrn_apst'];
+
+        $sql = "insert into trnc (
+        ID_TRNC, ID_GST, TIP_TRNC, VL_TRNC, DT_TRNC, ODD_APST, RSTD_APST, RTRN_APST
+        )
+        values ( 
+        '$ID_TRNC', '$ID_GST', '$TIP_TRNC', '$VL_TRNC', '$DT_TRNC', '$ODD_APST', '$RSTD_APST', '$RTRN_APST'
+        )";
+    }
 }
 
 if(isset($_POST['rq'])){
@@ -45,7 +63,9 @@ if(isset($_POST['rq'])){
         case 'stNwGst':
             $loadClass->setNewGestao();
             break;
-        
+        case 'stNwTrnc':
+            $loadClass->setNewTransacao();
+            break;
     }
 }
 
