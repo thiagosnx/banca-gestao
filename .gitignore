@@ -1,1 +1,2 @@
-environment/conexao.php
+# Ignorar diretórios específicos
+/environment/conexao.php
