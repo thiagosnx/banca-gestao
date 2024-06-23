@@ -123,7 +123,7 @@ function getFormData(form){
 $(function(){
     $(document).on('click', '#bt-st-nwfrm', function(){
         let data = getFormData($('form#nwGst'));
-        let formData = $('#nwGst').serialize();
+        // let formData = $('#nwGst').serialize();
         $.ajax({
             url : url,
             type: 'post',
@@ -131,10 +131,11 @@ $(function(){
             data: data,
             success: function(res){
                 console.log(res);
+                $('#success-msg').text('Gestão Iniciada com Sucesso!');
             },
             error: function(err){
-                console.error(err);
-                console.log(data);
+                console.error(err.responseText);
+                 $('#error-message').text(err.responseText);
             }
     
         })

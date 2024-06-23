@@ -31,6 +31,7 @@ $gestoes = $loadClass->getGestoes();
 
     <div id="gestao">
         <h1>Nova Gestão</h1>
+        <span style="color:red;" id="error-message"></span>
         <div class="nw-gestao-form">
             <form id="nwGst">
             <input type="text" name="rq" value="stNwGst">

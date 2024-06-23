@@ -36,7 +36,7 @@ class Gestao {
     }
 
     public function setNewGestao(){
-        if(isset($_POST['vl_dpst_gst'])){
+        if($_POST['vl_dpst_gst'] != null){
             $ID_GST = $this->genId();
             $VL_DPST_GST = $_POST['vl_dpst_gst'];
             $DT_DPST = $_POST['dt_dpst'];
