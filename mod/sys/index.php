@@ -1,8 +1,6 @@
 <?php
-include_once '../../environment/database.php';
 include_once '../../environment/conexao.php';
-
-
+include_once '../../environment/database.php';
 class Gestao {
     public function genId(){
         $ts = time();
@@ -38,17 +36,24 @@ class Gestao {
     }
 
     public function setNewGestao(){
-        $ID_GST = $this->genId();
-        $VL_DPST_GST = $_POST['vl_dpst_gst'];
-        $sql = "insert into gst (
-            ID_GST
-            , VL_DPST_GST
-            , DT_GST_INC
-            ) values (
-            '$ID_GST','$VL_DPST_GST', NOW())";
-        $db = new Database("bancagestao");
-        $res = $db->DbInsert($sql);
-        echo json_encode($res);
+        if(isset($_POST['vl_dpst_gst'])){
+            $ID_GST = $this->genId();
+            $VL_DPST_GST = $_POST['vl_dpst_gst'];
+            $DT_DPST = $_POST['dt_dpst'];
+            $sql = "insert into gst (
+                ID_GST
+                , VL_DPST_GST
+                , DT_DPST
+                , DT_GST_INC
+                ) values (
+                '$ID_GST','$VL_DPST_GST', '$DT_DPST', NOW())";
+            $db = new Database("bancagestao");
+            $res = $db->DbInsert($sql);
+            echo json_encode($res);
+        }else{
+            echo 'Preencha com o valor do depósito.';
+        }
+
     }
 
     public function setNewTransacao(){
@@ -77,15 +82,15 @@ class Gestao {
     }
 }
 
-$loadClass = new Gestao();
-$loadClass->getGestoes();
+// $loadClass = new Gestao();
+// $gestoes = $loadClass->getGestoes();
+// echo json_encode($gestoes);
 
-if(isset($_POST['rq'])){
+if(isset($_POST["rq"])){
     session_start();
     include_once '../../environment/database.php';
     include_once '../../environment/conexao.php';
     $loadClass = new Gestao();
-
     $request = $_POST['rq'];
 
     switch($request){

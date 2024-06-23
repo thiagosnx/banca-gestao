@@ -1,9 +1,9 @@
 <?php 
-include_once '../../environment/database.php';
-include_once '../../environment/conexao.php';
-include_once '../sys/functions/index.php';
+
+include_once '../sys/index.php';
 $loadClass = new Gestao();
 $gestoes = $loadClass->getGestoes();
+// echo json_encode($gestoes);
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -22,6 +22,7 @@ $gestoes = $loadClass->getGestoes();
         <a href="#about">Sobre</a>
         <a href="#services">Serviços</a>
         <a href="#contact">Contato</a>
+        <a href="#contact">Login</a>
 </div>
     <div id="popup" class="popup">
         <p>Gestão inciada com sucesso!</p>
@@ -32,11 +33,12 @@ $gestoes = $loadClass->getGestoes();
         <h1>Nova Gestão</h1>
         <div class="nw-gestao-form">
             <form id="nwGst">
+            <input type="text" name="rq" value="stNwGst">
             <label for="">Valor do Depósito</label>
-            <input type="number" name="vl_dpst" placeholder="BRL">
+            <input type="number" name="vl_dpst_gst" placeholder="BRL">
             <label for="">Data do Depósito (opcional)</label>
-            <input type="date" name="description">
-            <button type="button" class="form-button">
+            <input type="date" name="dt_dpst">
+            <button id="bt-st-nwfrm" type="button" class="form-button">
                 Iniciar nova gestão
             </button>
             </form>
