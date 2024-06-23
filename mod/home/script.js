@@ -1,4 +1,13 @@
 const url = "/bnc-gst/mod/sys/" 
+function changeActive(id) {
+    var links = document.getElementsByClassName('navbar')[0].getElementsByTagName('a');
+    for (var i = 0; i < links.length; i++) {
+        links[i].classList.remove('active');
+    }
+
+    var activeLink = document.getElementById(id);
+    activeLink.classList.add('active');
+}
 
 function getFormData(form){
     var unindexed_array = form.serializeArray();

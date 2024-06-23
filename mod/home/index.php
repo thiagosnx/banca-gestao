@@ -18,11 +18,9 @@ $gestoes = $loadClass->getGestoes();
 </head>
 <body>
 <div class="navbar">
-        <a class="active" href="#home">Home</a>
-        <a href="#about">Sobre</a>
-        <a href="#services">Serviços</a>
-        <a href="#contact">Contato</a>
-        <a href="#contact">Login</a>
+    <a id="link-home" class="active" href="" onclick="changeActive('link-home')">Nova Gestão</a>
+    <a id="link-about" href="" onclick="changeActive('link-about')">Minhas Gestões</a>
+    <a id="link-services" href="" onclick="changeActive('link-services')">Suporte</a>
 </div>
     <div id="popup" class="popup">
         <p>Gestão inciada com sucesso!</p>
@@ -30,11 +28,11 @@ $gestoes = $loadClass->getGestoes();
 <div class="main-container">
 
     <div id="gestao">
-        <h1>Nova Gestão</h1>
+        <h1>Gestão Inteligente</h1>
         <span style="color:red;" id="error-message"></span>
         <div class="nw-gestao-form">
             <form id="nwGst">
-            <input type="text" name="rq" value="stNwGst">
+            <input type="hidden" name="rq" value="stNwGst">
             <label for="">Valor do Depósito</label>
             <input type="number" name="vl_dpst_gst" placeholder="BRL">
             <label for="">Data do Depósito (opcional)</label>
