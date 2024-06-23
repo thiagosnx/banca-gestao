@@ -1,72 +1,56 @@
-<?php
+<?php 
 include_once '../../environment/database.php';
 include_once '../../environment/conexao.php';
+include_once '../sys/functions/index.php';
+$loadClass = new Gestao();
+$gestoes = $loadClass->getGestoes();
+?>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <title>Gestão Inteligente</title>
 
+</head>
+<body>
+<div class="navbar">
+        <a class="active" href="#home">Home</a>
+        <a href="#about">Sobre</a>
+        <a href="#services">Serviços</a>
+        <a href="#contact">Contato</a>
+</div>
+    <div id="popup" class="popup">
+        <p>Gestão inciada com sucesso!</p>
+    </div>
+<div class="main-container">
 
-class Gestao {
-    function genId(){
-        $ts = date('dmYhis');
-        return $ts;
-    }
-
-    function getGestoes(){
-        $sql = 'select * from gst';
-        $db = new Database("bancagestao");
-        $res = $db->DbGetFull($sql);
-        $dados = $res['result'];
-        echo json_encode($dados);
-    }
-
-    function setNewGestao(){
-        $ID_GST = $this->genId();
-        $VL_DPST_GST = $_POST['vl_dpst_gst'];
-        $sql = "insert into gst (
-            ID_GST, VL_DPST_GST, DT_GST_INC
-            ) values (
-            '$ID_GST','$VL_DPST_GST', NOW())";
-        $db = new Database("bancagestao");
-        $res = $db->DbInsert($sql);
-        echo json_encode($res);
-    }
-
-    function setNewTransacao(){
-        $ID_TRNC = $this->genId();
-        $ID_GST = $_POST['id_gst'];
-        $TIP_TRNC = $_POST['tip_trnc'];
-        $VL_TRNC = $_POST['vl_trnc'];
-        $DT_TRNC = $_POST['dt_trnc'];
-        $ODD_APST = $_POST['odd_apst'];
-        $RSTD_APST = $_POST['rstd_apst'];
-        $RTRN_APST = $_POST['rtrn_apst'];
-
-        $sql = "insert into trnc (
-        ID_TRNC, ID_GST, TIP_TRNC, VL_TRNC, DT_TRNC, ODD_APST, RSTD_APST, RTRN_APST
-        )
-        values ( 
-        '$ID_TRNC', '$ID_GST', '$TIP_TRNC', '$VL_TRNC', '$DT_TRNC', '$ODD_APST', '$RSTD_APST', '$RTRN_APST'
-        )";
-    }
-}
-
-if(isset($_POST['rq'])){
-    session_start();
-    include_once '../../environment/database.php';
-    include_once '../../environment/conexao.php';
-    $loadClass = new Gestao();
-
-    $request = $_POST['rq'];
-
-    switch($request){
-        case 'getGst':
-            $loadClass->getGestoes();
-            break;
-        case 'stNwGst':
-            $loadClass->setNewGestao();
-            break;
-        case 'stNwTrnc':
-            $loadClass->setNewTransacao();
-            break;
-    }
-}
-
-
+    <div id="gestao">
+        <h1>Nova Gestão</h1>
+        <div class="nw-gestao-form">
+            <form id="nwGst">
+            <label for="">Valor do Depósito</label>
+            <input type="number" name="vl_dpst" placeholder="BRL">
+            <label for="">Data do Depósito (opcional)</label>
+            <input type="date" name="description">
+            <button type="button" class="form-button">
+                Iniciar nova gestão
+            </button>
+            </form>
+        </div>
+        <div id="gsts">
+            <div class="gst">
+            <p class="gst-description">
+            </p>
+           
+            
+            </div>
+        </div>
+    </div>
+</div>
+    <script src="script.js"></script>
+</body>
+</html>

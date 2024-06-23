@@ -1,0 +1,193 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400&display=swap');
+
+* {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.navbar {
+    background-color: #10101d;
+    overflow: hidden;
+}
+.navbar a {
+    float: left;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+}
+.navbar a:hover {
+    background-color: #ddd;
+    color: black;
+}
+.navbar a.active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+
+.popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: #1d2a47;
+}
+.main-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+}
+
+#gestao {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    background-color: #10101d;
+    padding: 18px;
+    border-radius: 8px;
+    width: 430px;
+}
+
+#gestao h1 {
+    color: #e5f9ff;
+    font-size: 28px;
+    text-transform: uppercase;
+}
+.gst-frm{
+    color: #e5f9ff;
+}
+
+.nw-gestao-form {
+    display: flex;
+    flex-direction: column;
+    gap: 240px;
+    width: 100%;
+    color: #fff;
+}
+
+
+.nw-gestao-form input {
+    background-color: transparent;
+    border: none;
+    color: #e5f9ff;
+    font-size: 16px;
+    width: 100%;
+    padding: 4px;
+    border-bottom: 2px solid #9cb6ee;
+    margin-bottom: 32px;
+}
+
+
+.nw-gestao-form input:focus-visible {
+    outline: none;
+}
+
+.nw-gestao-form .form-button{
+    padding: .4em;
+    border: none;
+    min-width: 40px;
+    min-height: 40px;
+    background-color: #9cb6ee;
+    border-radius: 8px;
+    font-size: 20px;
+    transition: .5s ease;
+}
+.nw-gestao-form .form-button:hover{
+    cursor: pointer;
+    scale: 1.05;
+}
+
+
+#gsts{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-height: 400px;
+    overflow: auto;
+}
+
+.gst{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #262626;
+    background-color: #191933;
+    padding: 8px 12px;
+    border-radius: 4px;
+}
+.gst .progress{
+    margin-right: 10px;
+}
+
+.gst .progress.done + .gst-description{
+    text-decoration: line-through;
+    color:#e5f9ffa7;
+}
+
+.gst .gst-description{
+    font-size: 16px;
+    color: #fff;
+    padding: 4px 0px;
+    width: 100%;
+}
+
+.gst .gst-actions{
+    display: flex;
+    gap: 10px;
+}
+
+.action-button{
+    font-size: 16px;
+}
+
+.action-button.edit-button{
+    color: #9cb6ee;
+}
+
+.action-button.delete-button{
+    color: #ee9c9c;
+}
+
+.hidden{
+    display: none !important;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+/* Ocultar el ícono predeterminado */
+input[type="date"]::-webkit-calendar-picker-indicator {
+    display: none;
+}
+
+input[type="date"] {
+    color: #262626;
+}
+
+
